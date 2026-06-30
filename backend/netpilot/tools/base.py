@@ -17,8 +17,17 @@ from __future__ import annotations
 
 import abc
 import time
-from enum import StrEnum
 from typing import Any
+
+try:
+    from enum import StrEnum  # Python 3.11+
+except ImportError:  # Python 3.10 — StrEnum was added in 3.11; shim its str semantics.
+
+    from enum import Enum
+
+    class StrEnum(str, Enum):
+        def __str__(self) -> str:
+            return self.value
 
 from pydantic import BaseModel, Field
 
