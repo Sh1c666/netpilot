@@ -6,7 +6,10 @@ build-backend = "setuptools.build_meta"
 name = "netpilot"
 version = "0.1.0"
 description = "NetPilot — AI Network Troubleshooting Copilot. LLM-guided, layer-by-layer network diagnosis for ops engineers."
-readme = "../README.md"
+# No `readme` key: the project README lives at the repo root (../README.md) for
+# GitHub, but setuptools refuses paths outside the package dir during
+# `pip install -e .`, which broke CI's Install step. Omitting it keeps the
+# install working; GitHub still renders the root README normally.
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "NetPilot contributors" }]
