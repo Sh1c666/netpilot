@@ -58,7 +58,7 @@ NetPilot 是一个开源、跨平台的网络故障排查 Copilot。它不是又
 ┌───────────────────────▼──────────────────────────────┐
 │  Python 后端 (FastAPI)                                │
 │  ┌──────────────┐   ┌─────────────────────────────┐   │
-│  │ Agent 编排    │   │ 工具层 (8 个诊断工具)        │   │
+│  │ Agent 编排    │   │ 工具层 (9 个诊断工具)        │   │
 │  │ ReAct 循环    │──▶│ dns/ping/traceroute/...     │   │
 │  │ 证据约束      │   │ 结构化输出 + summary_zh      │   │
 │  └──────┬───────┘   └─────────────────────────────┘   │
@@ -166,6 +166,7 @@ docker run -p 8000:8000 -v netpilot-data:/app/backend/data netpilot
 | `NETPILOT_LLM_API_KEY` | (空) | LLM API Key |
 | `NETPILOT_LLM_BASE_URL` | `https://api.deepseek.com` | OpenAI 兼容端点 |
 | `NETPILOT_LLM_MODEL` | `deepseek-chat` | 模型 id,**需支持 Function Calling** |
+| `NETPILOT_LLM_PROTOCOL` | `openai` | `openai`(任意 /chat/completions) 或 `anthropic`(BigModel Claude 兼容端点,如 glm-5.2) |
 | `NETPILOT_AGENT_MAX_STEPS` | `12` | 单次排查最大工具调用次数(防失控) |
 | `NETPILOT_PRIVACY_MASK_INTERNAL_IPS` | `true` | 内网 IP 脱敏开关 |
 | `NETPILOT_HOST` / `NETPILOT_PORT` | `127.0.0.1` / `8000` | 监听地址 |
@@ -224,7 +225,7 @@ AI_NetworkManage/
 │   │   ├── config.py            # 分层配置(启动配置 + 运行时可写)
 │   │   ├── api/                 # 路由 + schema(diagnose SSE / profiles / settings)
 │   │   ├── agent/               # 编排器 + LLM 客户端 + System Prompt + 事件
-│   │   ├── tools/               # 8 个诊断工具 + 注册表
+│   │   ├── tools/               # 9 个诊断工具 + 注册表
 │   │   ├── core/                # 隐私脱敏
 │   │   └── store/               # Profile JSON 存储
 │   ├── tests/

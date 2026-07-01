@@ -7,7 +7,7 @@
 ```
 交互层   React UI        —— 时间线 / 工具卡片 / 报告 / 设置
 编排层   Agent (FastAPI) —— ReAct 循环、证据约束、隐私脱敏、流式事件
-能力层   Tools           —— 8 个诊断工具,各自结构化输出
+能力层   Tools           —— 9 个诊断工具,各自结构化输出
 模型层   LLM (任意 OpenAI 兼容端点)—— Function Calling 决定下一步
 ```
 

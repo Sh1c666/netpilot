@@ -58,6 +58,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# 误在 backend/ 跑 npm 会生成垃圾 lockfile,忽略以防误提交
+backend/package-lock.json
+backend/node_modules/
+
 # ---- IDE / Editor ----
 .vscode/
 .idea/
