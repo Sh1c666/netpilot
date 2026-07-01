@@ -38,8 +38,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app/backend
 
-# pyproject.toml references readme = "../README.md", so place it at /app/README.md.
-COPY README.md /app/README.md
+# Backend sources. pyproject.toml has no `readme=` key (it was removed so the
+# root README.md isn't needed at build time), so we don't COPY it into the image.
 COPY backend/ /app/backend/
 
 # Editable install keeps the app's __file__-relative path resolution working
